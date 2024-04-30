@@ -434,7 +434,7 @@ const SignupForm = () => {
                                               src={'/auth/client.svg'}
                                             />
                                             <div className="w-[120px] leading-5">
-                                              I am client, hiring for project
+                                              I am Shop keeper, Retailer
                                             </div>
                                           </Label>
                                         </div>
