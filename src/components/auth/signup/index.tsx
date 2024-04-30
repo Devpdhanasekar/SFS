@@ -376,7 +376,7 @@ const SignupForm = () => {
                           render={({ field }) => (
                             <>
                               <h1 className="text-2xl font-semibold tracking-tight pb-8 text-center">
-                                Join as a client or designer
+                                Join as a Shop keeper or Retailer
                               </h1>
                               <CardContent className="pb-0 grid gap-6">
                                 <FormControl>
@@ -409,7 +409,7 @@ const SignupForm = () => {
                                             />
 
                                             <div className="w-[120px] leading-5">
-                                              I am designer Looking for work
+                                              I am Shop keeper
                                             </div>
                                           </Label>
                                         </div>
@@ -434,7 +434,7 @@ const SignupForm = () => {
                                               src={'/auth/client.svg'}
                                             />
                                             <div className="w-[120px] leading-5">
-                                              I am Shop keeper, Retailer
+                                              I am, Retailer
                                             </div>
                                           </Label>
                                         </div>
