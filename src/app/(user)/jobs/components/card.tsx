@@ -161,7 +161,7 @@ export function JobsCard() {
 
   const bindGridData = () => {
     return gridData.map((item:any, index) =>
-        <tr style={{backgroundColor:`${index % 2 === 0 ? 'white' :""}`}}>
+        <tr key={index} style={{backgroundColor:`${index % 2 === 0 ? 'white' :""}`}}>
           <td>{index + 1}</td>
           <td className='text-align-center'>{item.url}</td>
           <td className='text-align-right'>{item.image}</td>
