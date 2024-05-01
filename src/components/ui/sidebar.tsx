@@ -41,7 +41,7 @@ export function Sidebar({ className, playlists }: SidebarProps) {
 //     document.cookie = cookieName + '=; Max-Age=-99999999;';
 // }
   const getUser = async() =>{
-    const currentUser = await axios.get(`http://localhost:8080/user/${user_token}`)
+    const currentUser = await axios.get(`https://crafy-server.onrender.com/user/${user_token}`)
     if (currentUser.status === 200)
       console.log('currentUser', currentUser.data);
 

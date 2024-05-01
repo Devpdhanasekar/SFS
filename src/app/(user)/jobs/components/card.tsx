@@ -152,7 +152,7 @@ export function JobsCard() {
   },[])
 
   const getGridData = async() => {
-    const response = await axios.get('http://localhost:8080/works')
+    const response = await axios.get('https://crafy-server.onrender.com/works')
     const data = response.data
 
     setGridData(data)
