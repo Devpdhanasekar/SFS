@@ -20,6 +20,8 @@ import { Input } from '@/components/ui/input';
 import { Filters } from './components/filters';
 import { DiscoverCard } from './components/card';
 import { useEffect, useState } from 'react';
+import axios from 'axios';
+import './style.css'
 
 // export const metadata: Metadata = {
 //   title: 'Discover',
@@ -27,6 +29,29 @@ import { useEffect, useState } from 'react';
 // };
 
 export default function Discover() {
+  const [videos, setVideos] = useState([]);
+
+  useEffect(() => {
+    async function fetchVideos() {
+      try {
+        const response = await axios.get('https://www.googleapis.com/youtube/v3/search', {
+          params: {
+            key: 'AIzaSyCejrgwc8YOfUgiyIav3acGZHifa1MY9wE',
+            q: 'e sevai',
+            part: 'snippet',
+            type: 'video',
+            maxResults: 10, // Adjust the number of results as needed
+          },
+        });
+        setVideos(response.data.items);
+      } catch (error) {
+        console.error('Error fetching videos:', error);
+      }
+    }
+    fetchVideos();
+  }, []);
+
+  // AIzaSyCejrgwc8YOfUgiyIav3acGZHifa1MY9wE
   return (
     <>
       <div className=" md:block">
@@ -74,7 +99,15 @@ export default function Discover() {
                     </div>
                     <Filters />
                   </div>
-                  <DiscoverCard />
+                  {/* <DiscoverCard /> */}
+                  {videos.map((video: any) => (
+                    <div key={video.id.videoId} className="video-item">
+                      <h2>{video.snippet.title}</h2>
+                      <img src={video.snippet.thumbnails.default.url} alt={video.snippet.title} />
+                      <p>{video.snippet.description}</p>
+                      <a href={`https://www.youtube.com/watch?v=${video.id.videoId}`} target="_blank" rel="noopener noreferrer">Watch on YouTube</a>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>

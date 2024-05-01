@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import UserNav from '@/components/ui/usernav';
 import Cookies from 'js-cookie'
 import { useGetUserQuery } from '@/redux/api/usersApi';
+import { useEffect, useState } from 'react';
 
 // export const metadata: Metadata = {
 //   title: 'Dashboard',
@@ -19,6 +20,22 @@ export default function Dashboard() {
   console.log("user_token", typeof(user_token))
   const dataOfUser = useGetUserQuery(user_token ? user_token : '').data?.user
   console.log("Userdata",dataOfUser)
+  const [url, setUrl] = useState('');
+  const [qrCodeDataUrl, setQrCodeDataUrl] = useState('');
+
+  useEffect(() => {
+    generateQRCode("https://google.com");
+  },[])
+  const generateQRCode = (url:any) => {
+    if (!url) {
+      return;
+    }
+
+    const qr = require('qr-image');
+    const qr_svg = qr.imageSync(url, { type: 'png' });
+    const dataUrl = `data:image/png;base64,${qr_svg.toString('base64')}`;
+    setQrCodeDataUrl(dataUrl);
+  };
   return (
     <>
       <div className=" md:block">
@@ -63,7 +80,15 @@ export default function Dashboard() {
                       Welcome, {dataOfUser && dataOfUser.firstName} 👋
                     </h4>
                   </div>
-                  <div className="flex"></div>
+                  <div className="flex flex-column">
+                    <h1 className="text-2xl font-bold mb-4 m-2">Take print the paste the QR in your shop</h1>
+                  {qrCodeDataUrl && (
+                    <div>
+                      <img style={{height:"300px",width:"300px"}} src={qrCodeDataUrl} alt="QR Code" />
+                      <h2>Scan and send documents and pay now</h2>
+                    </div>
+                  )}
+                  </div>
                 </div>
               </div>
             </div>

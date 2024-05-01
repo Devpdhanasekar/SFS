@@ -1,0 +1,61 @@
+/* Style for the page container */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Style for the heading */
+  h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  /* Style for the videos container */
+  .videos-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  
+  /* Style for each video item */
+  .video-item {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Style for the video title */
+  .video-item h2 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  /* Style for the video thumbnail */
+  .video-item img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+  }
+  
+  /* Style for the video description */
+  .video-item p {
+    font-size: 14px;
+    margin-top: 10px;
+  }
+  
+  /* Style for the watch on YouTube link */
+  .video-item a {
+    display: inline-block;
+    font-size: 14px;
+    color: #007bff;
+    text-decoration: none;
+    margin-top: 10px;
+  }
+  
+  /* Style for the watch on YouTube link on hover */
+  .video-item a:hover {
+    text-decoration: underline;
+  }
+  

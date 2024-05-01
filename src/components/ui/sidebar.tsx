@@ -18,6 +18,8 @@ import {
   DropdownMenuShortcut,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import axios from 'axios';
+import { useEffect } from 'react';
 
 interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {
   playlists: Playlist[];
@@ -25,9 +27,25 @@ interface SidebarProps extends React.HTMLAttributes<HTMLDivElement> {
 
 export function Sidebar({ className, playlists }: SidebarProps) {
   const user_token = Cookies.get('access_token');
+  console.log('user_token', user_token);
   console.log('user_token', typeof user_token);
   const dataOfUser = useGetUserQuery(user_token ? user_token : '').data?.user;
   console.log('Userdata', dataOfUser);
+
+  // clearCookie('access_token')
+
+  useEffect(()=>{
+    getUser()
+  },[])
+//   function clearCookie(cookieName:any) {
+//     document.cookie = cookieName + '=; Max-Age=-99999999;';
+// }
+  const getUser = async() =>{
+    const currentUser = await axios.get(`http://localhost:8080/user/${user_token}`)
+    if (currentUser.status === 200)
+      console.log('currentUser', currentUser.data);
+
+  }
   return (
     <div className={cn('pb-12', 'h-lvh', className)}>
       <div className="space-y-4 py-4">

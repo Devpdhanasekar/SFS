@@ -136,14 +136,40 @@ import { useGetUserQuery } from '@/redux/api/usersApi';
 import Cookies from 'js-cookie';
 import jwtDecode from 'jwt-decode';
 import './table.css'
+import axios from 'axios';
 
 export function JobsCard() {
   const [jobs, setJobs] = useState({});
+  const [gridData,setGridData] = useState([])
 
   let user_token = Cookies.get('access_token');
   console.log('user_token', typeof user_token);
   const { data: Userdata } = useGetUserQuery(user_token ? user_token : '');
   console.log('Userdata', Userdata);
+
+  useEffect(() => {
+    getGridData()
+  },[])
+
+  const getGridData = async() => {
+    const response = await axios.get('http://localhost:8080/works')
+    const data = response.data
+
+    setGridData(data)
+  }
+
+
+  const bindGridData = () => {
+    return gridData.map((item:any, index) =>
+        <tr style={{backgroundColor:`${index % 2 === 0 ? 'white' :""}`}}>
+          <td>{index + 1}</td>
+          <td className='text-align-center'>{item.url}</td>
+          <td className='text-align-right'>{item.image}</td>
+          <td className='text-align-right'>{item.dateandTime}</td>
+          <td className='text-align-right'><button className='edit-button'><a href={item.image} download>Download</a></button></td>
+          <td className='text-align-right'><button className='delete-button'>Delete</button></td>
+          </tr>
+          )}
 
   return (
     <>
@@ -203,16 +229,18 @@ export function JobsCard() {
                     <th>S.No</th>
                     <th>File name</th>
                     <th>Url</th>
+                    <th>Date and time</th>
                     <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
+                  {/* <tr>
                     <td>1</td>
                     <td className='text-align-center'>File name</td>
                     <td className='text-align-right'>Url</td>
                     <td className='text-align-right'><button className='edit-button'>Download</button></td>
-                  </tr>
+                  </tr> */}
+                  {gridData && bindGridData()}
                 </tbody>
               </table>
             </div>
