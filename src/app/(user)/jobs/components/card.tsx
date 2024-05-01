@@ -164,7 +164,7 @@ export function JobsCard() {
         <tr key={index} style={{backgroundColor:`${index % 2 === 0 ? 'white' :""}`}}>
           <td>{index + 1}</td>
           <td className='text-align-center'>{item.url}</td>
-          <td className='text-align-right'>{item.image}</td>
+          <td className='text-align-right'>{item.title}</td>
           <td className='text-align-right'>{item.dateandTime}</td>
           <td className='text-align-right'><button className='edit-button'><a href={item.image} download>Download</a></button></td>
           <td className='text-align-right'><button className='delete-button'>Delete</button></td>
@@ -228,7 +228,7 @@ export function JobsCard() {
                   <tr>
                     <th>S.No</th>
                     <th>File name</th>
-                    <th>Url</th>
+                    <th>Customer Name</th>
                     <th>Date and time</th>
                     <th>Action</th>
                   </tr>

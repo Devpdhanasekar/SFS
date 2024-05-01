@@ -154,7 +154,7 @@ export const Filters = () => {
           </Sheet>
         ))}
       </div>
-      <div className=" mx-5 ">
+      {/* <div className=" mx-5 ">
         <Button
           variant="outline"
           className="mx-1 px-2 font-light rounded-xl"
@@ -162,7 +162,7 @@ export const Filters = () => {
         >
           Post New Job
         </Button>
-      </div>
+      </div> */}
     </>
   );
 };
