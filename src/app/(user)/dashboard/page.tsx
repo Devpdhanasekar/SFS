@@ -24,7 +24,7 @@ export default function Dashboard() {
   const [qrCodeDataUrl, setQrCodeDataUrl] = useState('');
 
   useEffect(() => {
-    generateQRCode("https://google.com");
+    generateQRCode("https://sfs-client-app.netlify.app/");
   },[])
   const generateQRCode = (url:any) => {
     if (!url) {
