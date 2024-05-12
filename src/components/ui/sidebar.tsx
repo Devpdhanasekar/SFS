@@ -196,6 +196,7 @@ export function Sidebar({ className, playlists }: SidebarProps) {
                 Files
               </Button>
             </Link>
+            <div className="shrink-0 bg-border h-[1px] w-full"></div>
             <Link href='/project-invoices'>
             <Button variant="ghost" className="w-full justify-start">
               <svg
@@ -212,6 +213,7 @@ export function Sidebar({ className, playlists }: SidebarProps) {
             </Button>
             </Link>
             <div className="shrink-0 bg-border h-[1px] w-full"></div>
+            <Link href='/ai-chatbot'>
             <Button variant="ghost" className="w-full justify-start">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -225,6 +227,8 @@ export function Sidebar({ className, playlists }: SidebarProps) {
               </svg>
               Earnings
             </Button>
+            </Link>
+            <Link href='/ai-chatbot'>
             <Button variant="ghost" className="w-full justify-start">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -238,6 +242,7 @@ export function Sidebar({ className, playlists }: SidebarProps) {
               </svg>
               AI chatbot
             </Button>
+            </Link>
             <div className="shrink-0 bg-border h-[1px] w-full"></div>
             <Button variant="ghost" className="w-full justify-start">
               <svg

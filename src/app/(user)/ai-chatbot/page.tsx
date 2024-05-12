@@ -9,6 +9,7 @@ import UserNav from '@/components/ui/usernav';
 import Cookies from 'js-cookie'
 import { useGetUserQuery } from '@/redux/api/usersApi';
 import { useEffect, useState } from 'react';
+import Chatbot from './chat/chat';
 
 // export const metadata: Metadata = {
 //   title: 'Dashboard',
@@ -77,20 +78,11 @@ export default function Dashboard() {
                       <UserNav />
                     </div>
                   </div>
-                  <div className="coverImage bg-slate-100 h-64 relative">
-                    <h4 className="absolute bottom-0 px-5 py-5">
-                      Welcome, {dataOfUser && dataOfUser.firstName} 👋
-                    </h4>
-                  </div>
-                  <div className="flex flex-column">
-                    <h1 className="text-2xl font-bold mb-4 m-2">Take print the paste the QR in your shop</h1>
-                  {qrCodeDataUrl && (
-                    <div>
-                      <img style={{height:"300px",width:"300px"}} src={qrCodeDataUrl} alt="QR Code" />
-                      <h2>Scan and send documents and pay now</h2>
-                    </div>
-                  )}
-                  </div>
+                  <Chatbot/>
+                  {/* <div className="coverImage bg-slate-100 h-64 relative">
+                    <input></input>
+                    <button>Send</button>
+                  </div> */}
                 </div>
               </div>
             </div>
